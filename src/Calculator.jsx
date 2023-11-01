@@ -25,14 +25,21 @@ const Calculator = () => {
     const handleBackspace = () => {
         setInput(input.slice(0, -1));
       };
+      const handlePercentage = () => {
+        try {
+          setInput((eval(input) / 100).toString());
+        } catch (error) {
+          setInput('Error');
+        }
+      };
 
 
     return (
         <div className="w-100 vh-100 d-flex justify-content-center align-items-center   flex-column ">
 
                 
-                <div className=" w-50 p-1">
-              <Row className='p-2'><span style={{height:"50px",border:"solid 2px ",borderRadius:'4px',fontSize:"30px"}}  ><p  >{input}</p></span></Row>
+                <div className=" w-25 p-3 border shadow rounded " style={{backgroundColor:''}}>
+              <Row className='p-2 ' ><span style={{height:"50px",border:"solid ",borderRadius:'4px',fontSize:"30px",backgroundColor:'#94dde7'}}  ><p  >{input}</p></span></Row>
                     <Row>
                             <Col> 
                             <button  className=' d-flex justify-content-center align-items-center  btn border-black w-100 mt-2 fw-bold  '  onClick={handleClear}>C</button>
@@ -43,7 +50,7 @@ const Calculator = () => {
     
                             </Col>
                             <Col>
-                            <button className='    btn border-black w-100 mt-2 fw-bold ' onClick={() => handleButtonClick('%')}>%</button>
+                            <button className='    btn border-black w-100 mt-2 fw-bold ' onClick={() => handlePercentage('%')}>%</button>
     
         
                             </Col>
@@ -118,7 +125,7 @@ const Calculator = () => {
         
                             </Col>
                             <Col className=''>
-                            <button  className='btn border-black w-100 mt-2 fw-bolder  '  onClick={handleCalculate}>=</button>
+                            <button  className='btn d-flex justify-content-center  border-black w-100 mt-2 fw-bolder  '  style={{border:'solid',backgroundColor:'#6dd5ed'}} onClick={handleCalculate}>=</button>
         
                             </Col>
                         </Row>
